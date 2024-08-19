@@ -1,6 +1,6 @@
-# Favorite Programming Languages Web App
+# What's Your Favorite Programming Language
 
-A simple web application that allows users to submit their favorite programming language. The app visualizes the popularity of each programming language using a pie chart.
+A simple web application that allows users to submit their favorite programming language and visualize the popularity of each language using a pie chart.
 
 ## Features
 
@@ -26,8 +26,8 @@ A simple web application that allows users to submit their favorite programming 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/favorite_language_app.git
-    cd favorite_language_app
+    git clone https://github.com/tommasocerruti/whats-your-favorite-programming-language.git
+    cd whats-your-favorite-programming-language
     ```
 
 2. Create a virtual environment (not mandatory, but recommended):
@@ -74,4 +74,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 If you have any questions or suggestions, please contact [Tommaso](mailto:tommasocerruti@gmail.com).
-

@@ -22,7 +22,7 @@ def submit():
     if existing_language:
         languages_collection.update_one(
             {'name': language},
-            {'$inc': {'count': 1}}
+            {'$count': 1}
         )
     else:
         languages_collection.insert_one({'name': language, 'count': 1})
