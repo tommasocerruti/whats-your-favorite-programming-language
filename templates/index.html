@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Programming Languages</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Link to CSS -->
+</head>
+<body>
+    <h1>What's Your Favorite Programming Language?</h1>
+    <form id="languageForm">
+        <label for="language">Choose your favorite programming language:</label>
+        <select id="language" name="language">
+            <option value="C">C</option>
+            <option value="C++">C++</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Ruby">Ruby</option>
+            <option value="Swift">Swift</option>
+            <option value="Go">Go</option>
+            <option value="Kotlin">Kotlin</option>
+            <option value="TypeScript">TypeScript</option>
+            <option value="PHP">PHP</option>
+            <option value="R">R</option>
+            <option value="Scala">Scala</option>
+            <option value="Perl">Perl</option>
+            <option value="Objective-C">Objective-C</option>
+            <option value="Shell">Shell</option>
+            <option value="MATLAB">MATLAB</option>
+            <option value="Dart">Dart</option>
+            <option value="Elixir">Elixir</option>
+            <option value="Rust">Rust</option>
+            <option value="Haskell">Haskell</option>
+            <option value="Lua">Lua</option>
+            <option value="F#">F#</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Language Popularity</h2>
+    <canvas id="languageChart"></canvas>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
