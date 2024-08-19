@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 responsive: false,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
             }
         });
     }

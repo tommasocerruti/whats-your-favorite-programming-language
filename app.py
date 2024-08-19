@@ -22,23 +22,22 @@ def submit():
     if existing_language:
         languages_collection.update_one(
             {'name': language},
-            {'$count': 1}
+            {'$inc': {'count': 1}}
         )
     else:
         languages_collection.insert_one({'name': language, 'count': 1})
 
     return jsonify({'message': 'Success'}), 200
 
-
 @app.route('/languages', methods=['GET'])
 def get_languages():
-    pipeline = [
-        {'$group': {'_id': '$language', 'count': {'$sum': 1}}},
-        {'$sort': {'count': -1}}
-    ]
-    result = list(languages_collection.aggregate(pipeline))
-    data = {doc['_id']: doc['count'] for doc in result if doc['_id'] is not None}
+    languages = languages_collection.find()
+    data = {}
+    for lang in languages:
+        if 'name' in lang and 'count' in lang:
+            data[lang['name']] = lang['count']
     return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
