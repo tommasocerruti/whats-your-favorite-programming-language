@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual environment
+venv/
+.env/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# MongoDB
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tgz
+*.tbz
+
+# Temporary files
+*.tmp
+*.swp
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# Coverage
+.coverage
+coverage.xml
+
+# Flask
+instance/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Personal scripts
+clear_db.py
