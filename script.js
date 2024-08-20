@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('languageForm');
+    const apiUrl = 'https://wyfpl-b1bf885aaa7c.herokuapp.com';
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const language = document.getElementById('language').value;
 
-        await fetch('/submit', {
+        await fetch(`${apiUrl}/submit`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let chart = null;
 
     async function updateChart() {
-        const response = await fetch('/languages');
+        const response = await fetch(`${apiUrl}/languages`);
         const data = await response.json();
 
         const ctx = document.getElementById('languageChart').getContext('2d');
