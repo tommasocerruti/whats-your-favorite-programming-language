@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
+import os
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb://localhost:27017/')
+mongo_uri = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
+client = MongoClient(mongo_uri)
 db = client['languagesDB']
 languages_collection = db['languages']
 
@@ -37,7 +39,6 @@ def get_languages():
         if 'name' in lang and 'count' in lang:
             data[lang['name']] = lang['count']
     return jsonify(data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
