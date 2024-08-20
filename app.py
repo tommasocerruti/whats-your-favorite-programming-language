@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-mongo_uri = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
+mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
 client = MongoClient(mongo_uri)
 db = client['languagesDB']
 languages_collection = db['languages']
