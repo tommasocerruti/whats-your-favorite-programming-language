@@ -1,16 +1,12 @@
 from flask import Flask, render_template, request, jsonify
-from pymongo import MongoClient
 from flask_cors import CORS
-import os
 import re
 
 app = Flask(__name__)
 CORS(app)
 
-mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
-client = MongoClient(mongo_uri)
-db = client['languagesDB']
-languages_collection = db['languages']
+# In-memory storage for testing
+languages_data = {}
 
 @app.route('/')
 def index():
@@ -27,17 +23,12 @@ def submit():
         if not isinstance(language, str) or not re.match(r'^[a-zA-Z+#\-\s]+$', language):
             return jsonify({'error': 'Invalid language format'}), 400
         
-        language = language.strip()[:50]  # Sanitize and limit length
+        language = language.strip()[:50]
         
-        existing_language = languages_collection.find_one({'name': {'$eq': language}})
-        
-        if existing_language:
-            languages_collection.update_one(
-                {'name': {'$eq': language}},
-                {'$inc': {'count': 1}}
-            )
+        if language in languages_data:
+            languages_data[language] += 1
         else:
-            languages_collection.insert_one({'name': language, 'count': 1})
+            languages_data[language] = 1
         
         return jsonify({'message': 'Success'}), 200
     except Exception as e:
@@ -46,12 +37,7 @@ def submit():
 @app.route('/languages', methods=['GET'])
 def get_languages():
     try:
-        languages = languages_collection.find({}, {'name': 1, 'count': 1, '_id': 0})
-        data = {}
-        for lang in languages:
-            if 'name' in lang and 'count' in lang:
-                data[lang['name']] = lang['count']
-        return jsonify(data)
+        return jsonify(languages_data)
     except Exception as e:
         return jsonify({'error': 'Server error'}), 500
 
