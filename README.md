@@ -1,76 +1,124 @@
-# What's Your Favorite Programming Language
+# What's Your Favorite Programming Language? 📊
 
-A simple web application that allows users to submit their favorite programming language and visualize the popularity of each language using a pie chart.
+An interactive web application that collects and visualizes programming language preferences through real-time pie charts. Users can vote for their favorite language and instantly see how their choice compares to others.
 
-## Features
+![Demo](https://img.shields.io/badge/demo-live-brightgreen) ![Python](https://img.shields.io/badge/python-3.x-blue) ![Flask](https://img.shields.io/badge/flask-3.0.3-lightgrey)
 
-- Users can choose and submit their favorite programming language.
-- The application displays a pie chart showing the distribution of favorite languages.
-- Data is stored in a MongoDB database.
+## ✨ Features
 
-## Tech Stack
+- **Interactive Voting**: Choose from 23+ popular programming languages
+- **Real-time Visualization**: Pie chart updates instantly after each vote
+- **Secure Backend**: Input validation and NoSQL injection protection
+- **Responsive Design**: Works on desktop and mobile devices
+- **Persistent Storage**: Data saved in MongoDB or in-memory for testing
 
-- **Frontend**: HTML, CSS, JavaScript (Chart.js)
-- **Backend**: Flask
-- **Database**: MongoDB
+## 🛠 Tech Stack
 
-## Setup
+- **Frontend**: HTML5, CSS3, JavaScript (Chart.js for visualizations)
+- **Backend**: Flask (Python web framework)
+- **Database**: MongoDB (with in-memory fallback option)
+- **Security**: Input sanitization, CORS protection, error handling
 
-### Prerequisites
+## 🚀 Quick Start
 
-- Python 3.x
-- MongoDB
+### Option 1: With MongoDB (Recommended)
 
-### Installation
+1. **Clone and setup**:
+   ```bash
+   git clone https://github.com/tommasocerruti/whats-your-favorite-programming-language.git
+   cd whats-your-favorite-programming-language
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-1. Clone the repository:
+2. **Install MongoDB**:
+   ```bash
+   # macOS with Homebrew
+   brew tap mongodb/brew
+   brew install mongodb-community
+   brew services start mongodb/brew/mongodb-community
+   
+   # Or use Docker
+   docker run -d -p 27017:27017 --name mongodb mongo:latest
+   ```
 
-    ```bash
-    git clone https://github.com/tommasocerruti/whats-your-favorite-programming-language.git
-    cd whats-your-favorite-programming-language
-    ```
+3. **Run the application**:
+   ```bash
+   python app.py
+   ```
 
-2. Create a virtual environment (not mandatory, but recommended):
+### Option 2: Quick Test (No MongoDB Required)
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
+1. **Setup and run**:
+   ```bash
+   git clone https://github.com/tommasocerruti/whats-your-favorite-programming-language.git
+   cd whats-your-favorite-programming-language
+   pip install flask flask-cors
+   python app_simple.py
+   ```
 
-3. Install dependencies:
+2. **Access the app**: Open `http://127.0.0.1:5000/`
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+## 📱 How to Use
 
-4. Start MongoDB if it's not already running:
+1. **Vote**: Select your favorite programming language from the dropdown
+2. **Submit**: Click the "Submit" button to cast your vote
+3. **Visualize**: Watch the pie chart update in real-time
+4. **Explore**: Vote multiple times to see the distribution change
 
-    ```bash
-    mongod
-    ```
+### Available Languages
+C, C++, Java, Python, JavaScript, Ruby, Swift, Go, Kotlin, TypeScript, PHP, R, Scala, Perl, Objective-C, Shell, MATLAB, Dart, Elixir, Rust, Haskell, Lua, F#
 
-5. Run the Flask application:
+## 🔧 API Endpoints
 
-    ```bash
-    python app.py
-    ```
+- `GET /` - Main application page
+- `POST /submit` - Submit language vote
+  ```json
+  {"language": "Python"}
+  ```
+- `GET /languages` - Get current vote counts
+  ```json
+  {"Python": 15, "JavaScript": 12, "Java": 8}
+  ```
 
-6. Open your browser and go to `http://127.0.0.1:5000/` to use the application.
+## 🔒 Security Features
 
-## Usage
+- Input validation and sanitization
+- NoSQL injection prevention
+- CORS protection
+- Error handling and logging
+- Rate limiting ready
 
-- Select your favorite programming language from the dropdown menu.
-- Click "Submit" to send your choice.
-- The pie chart will update to show the popularity distribution of all submitted languages.
+## 🐛 Troubleshooting
 
-## Contributing
+**MongoDB Connection Issues**:
+- Ensure MongoDB is running: `brew services list | grep mongodb`
+- Check connection string in environment variables
+- Use `app_simple.py` for testing without MongoDB
 
-Feel free to fork the repository and submit pull requests. For major changes, please open an issue to discuss the changes first.
+**Port Already in Use**:
+- Kill existing process: `lsof -ti:5000 | xargs kill -9`
+- Or change port in app configuration
 
-## License
+## 🤝 Contributing
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -m 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
 
-## Contact
+## 📄 License
 
-If you have any questions or suggestions, please contact [Tommaso](mailto:tommasocerruti@gmail.com).
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Tommaso Cerruti**
+- Email: [tommasocerruti@gmail.com](mailto:tommasocerruti@gmail.com)
+- GitHub: [@tommasocerruti](https://github.com/tommasocerruti)
+
+---
+
+⭐ **Star this repo if you found it helpful!**
